@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html>
+  <head>
+ 
+<!------ Include the above in your HEAD tag ---------->
+  </head>
 <body>
 
-<h2>JavaScript Array Sort</h2>
+<h2>What is a closure?</h2>
 
-<p>The sort() method sorts an array alphabetically.</p>
+<p>closure is an inner function that has access to the outer (enclosing) function’s variables—scope chain.</p>
 
-<button onclick="myFunction()">Try it</button>
 
-<p id="demo"></p>
+<p id="demo">The closure has three scope chains:<br>
+  A) it has access to its own scope (variables defined between its curly brackets), <br>
+  B)it has access to the outer function’s variables, <br>
+  C) it has access to the global variables.</p>
 
 <script>
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
-document.getElementById("demo").innerHTML = fruits;
 
-function myFunction() {
-  fruits.sort();
-  document.getElementById("demo").innerHTML = fruits;
+// Example #1 closure starts
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  function displayName() { // displayName() is the inner function, a closure
+    console.log(name); // use variable declared in the parent function
+  }
+  displayName();
 }
+init();
+// Example #1 closure ends
+
+
+// Example #2 closure starts
+function makeFunc() {
+  var name = 'Mozilla';
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+var myFunc = makeFunc();
+myFunc();
+// Example #2 closure ends
 </script>
 
 </body>
